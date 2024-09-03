@@ -56,4 +56,4 @@ This project uses the [Hugging Face Diffusers library](https://github.com/huggin
 
 For more information about their licenses and usage, please refer to the official documentation and license agreements provided by Hugging Face.
 
-This project is not affiliated with, endorsed by, or sponsored by Hugging Face.
+This project is not affiliated with, endorsed by, or sponsored by Hugging Face or StabilityAI.
