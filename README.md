@@ -42,6 +42,10 @@ pip freeze > requirements.txt
 Copy my script. Make sure to put your safetensors in the models directory.
 Add the model file name at the top of your script adjust the parameters.
 
+## Step 9: Run your script.
+In terminal:
+python app.py
+
 ## Disclaimer
 
 This project uses the [Hugging Face Diffusers library](https://github.com/huggingface/diffusers) and [Stable Diffusion XL (SDXL) models](https://huggingface.co/models). 
@@ -53,8 +57,3 @@ This project uses the [Hugging Face Diffusers library](https://github.com/huggin
 For more information about their licenses and usage, please refer to the official documentation and license agreements provided by Hugging Face.
 
 This project is not affiliated with, endorsed by, or sponsored by Hugging Face.
-
-## Step 9: Run your script.
-In terminal:
-python app.py
-
