@@ -2,7 +2,7 @@ from diffusers import StableDiffusionXLPipeline
 import torch, random, os
 
 # Load model from local safetensors file
-pipeline = StableDiffusionXLPipeline.from_single_file(f"models/any-sdxl-model.safetensors")
+pipeline = StableDiffusionXLPipeline.from_single_file("models/any-sdxl-model.safetensors")
 
 # Adjust pipeline input parameters
 prompt = "A beautiful sunset over a mountain range, high resolution photograph"
