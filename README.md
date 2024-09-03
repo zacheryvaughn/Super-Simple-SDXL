@@ -1,5 +1,5 @@
 # Super Simple SDXL Text-to-Image Inference
-#### Simplest method for running SDXL from a single stafetensors file (on MacOS)
+#### Simplest method for running SDXL from a single stafetensors file (instructions for MacOS)
 I hope this will help anyone who wants to get started generating images locally with any fine-tuned SDXL .safetensors model. This relies entirely on the [HuggingFace Diffusers library](https://huggingface.co/docs/diffusers/en/index) with their [SDXL Pipeline](https://huggingface.co/docs/diffusers/en/using-diffusers/sdxl), all I am doing is providing you a very basic inference starting point. These instructions assume you are on M1 Mac and already have Homebrew, Python, XCode, and an IDE. People seem to be having issues using from_single_file, but it's usually because they're using an incompatible file, the wrong pipeline, or an invalid path, you can absolutely use a single .safetensors file and this is how.
 
 ## Step 1: Setup your project directory structure.
