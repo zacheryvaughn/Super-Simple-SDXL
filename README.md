@@ -46,7 +46,7 @@ Add the model file name at the top of your script adjust the parameters.
 In terminal:  
 python app.py
 
-#### Side node: 1024x1024+Euler generates at around 1 iteration per minute on M1 Mac.
+#### Side node: 1024x1024 with Euler generates at around 2 iteration per minute on M1 Mac.
 
 ## Disclaimer
 
