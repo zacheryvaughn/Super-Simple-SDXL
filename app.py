@@ -3,7 +3,7 @@ import torch
 import os
 
 # Options and parameters
-model = "JuggernautXL-V11.safetensors"
+model = "any-sdxl-model.safetensors"
 prompt = "A beautiful sunset over a mountain range, high resolution photograph"
 negative_prompt = "cartoon, anime, unrealistic, low resolution, low quality"
 num_inference_steps = 20
