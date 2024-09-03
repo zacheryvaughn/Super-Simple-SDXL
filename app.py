@@ -2,7 +2,7 @@ from diffusers import StableDiffusionXLPipeline
 import torch, random, os
 
 # Load model from local safetensors file
-pipeline = StableDiffusionXLPipeline.from_single_file(f"models/JuggernautXL-V11.safetensors")
+pipeline = StableDiffusionXLPipeline.from_single_file(f"models/any-sdxl-model.safetensors")
 
 # Adjust pipeline input parameters
 prompt = "A beautiful sunset over a mountain range, high resolution photograph"
@@ -11,7 +11,7 @@ iterations = 3
 guidance = 7
 width = 768
 height = 1024
-seed = 723316384
+seed = None
 
 # Generate a random seed if none is provided, initialize generator with seed
 if seed is None:
