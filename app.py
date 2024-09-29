@@ -1,29 +1,39 @@
-from diffusers import StableDiffusionXLPipeline
 import torch, random, os
+from diffusers import StableDiffusionXLPipeline
+from diffusers.schedulers import EulerDiscreteScheduler
 
-# Load model from local safetensors file
-pipeline = StableDiffusionXLPipeline.from_single_file("models/any-sdxl-model.safetensors")
+# SET DEVICE AND PRECISION
+if torch.cuda.is_available():
+    device = "cuda"
+    precision = torch.float16
+elif torch.backends.mps.is_available():
+    device = "mps"
+    precision = torch.float32
+else:
+    device = "cpu"
+    precision = torch.float32
 
-# Adjust pipeline input parameters
+# INPUT GENERATION SETTINGS
+model = "EpicRealismXL-V8-KiSS.safetensors"
 prompt = "A beautiful sunset over a mountain range, high resolution photograph"
 negative_prompt = "cartoon, anime, unrealistic, low resolution, low quality"
-iterations = 3
-guidance = 7
+iterations = 25
+guidance = 5
 width = 768
 height = 1024
 seed = None
 
-# Generate a random seed if none is provided, initialize generator with seed
+# GENERATE SEED IF NOT IS PROVIDED
 if seed is None:
     seed = random.randint(0, 2**32 - 1)
 generator = torch.Generator().manual_seed(seed)
 
-# Set device type and precision
-device = "cuda" if torch.cuda.is_available() else "cpu"
-precision = torch.float16 if device == "cuda" else torch.float32
+# INITIALIZE PIPELINE WITH MODEL, DEVICE, SCHEDULER
+pipeline = StableDiffusionXLPipeline.from_single_file(f"models/{model}", use_safetensors=True)
 pipeline = pipeline.to(device=device, dtype=precision)
+pipeline.scheduler = EulerDiscreteScheduler.from_config(pipeline.scheduler.config)
 
-# Generate an image from pipeline and define it as the output
+# CALL THE PIPELINE TO PRODUCE AN OUTPUT
 output = pipeline(
     prompt=prompt,
     negative_prompt=negative_prompt,
@@ -34,10 +44,8 @@ output = pipeline(
     generator=generator
 )
 
-# Define output directory and ensure it exists using os
+# ENSURE OUTPUT DIRECTORY AND SET FILENAME
 os.makedirs("outputs", exist_ok=True)
-
-# Generate unique filename with the seed and an incrementing value
 filename = next(
     (f"outputs/{seed}-{i}.png" for i in range(1, 1000)
      if not os.path.exists(f"outputs/{seed}-{i}.png")),
