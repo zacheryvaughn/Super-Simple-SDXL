@@ -1,6 +1,6 @@
 # Super Simple SDXL Text-to-Image Inference
-#### Simplest method for running SDXL from a single stafetensors file (instructions for MacOS)
-As a front-end developer, I have never even touched python until I started playing with text-to-image. There are lots of guides online but they're not very beginner friendly so I hope this will help anyone who wants to get started generating images locally with any fine-tuned SDXL .safetensors model. This relies entirely on the [HuggingFace Diffusers library](https://huggingface.co/docs/diffusers/en/index) with their [SDXL Pipeline](https://huggingface.co/docs/diffusers/en/using-diffusers/sdxl), all I am doing is providing you a very basic inference starting point. These instructions assume you are on M1 Mac and already have Homebrew, Python, XCode, and an IDE. People seem to be having issues using from_single_file, but it's usually because they're using an incompatible file, the wrong pipeline, or an invalid path, you can absolutely use a single .safetensors file and this is how.
+#### This is the bare minimum script for running SDXL with the Diffusers library from Hugging Face.
+#### It does not mix samplers with schedulers, it does not support LoRA's, and it does not handle mixed precision or manual precision for mps, but all of these things can easily be added if you need them.
 
 ## Step 1: Setup your project directory structure.
 models/ (directory containing your models)  
@@ -33,7 +33,12 @@ In terminal:
 pip install transformers
 
 
-## Step 7: Update your requirements.txt file.
+## Step 7: Install the Transformers library.
+In terminal:  
+pip install torch
+
+
+## Step 8: Update your requirements.txt file.
 In terminal:  
 pip freeze > requirements.txt
 
@@ -46,16 +51,4 @@ Add the model file name in the parameters section at the top.
 In terminal:  
 python app.py
 
-#### Side node: 1024x1024 with Euler generates at around 2 iteration per minute on M1 Mac.
-
-## Disclaimer
-
-This project uses the [Hugging Face Diffusers library](https://github.com/huggingface/diffusers) and [Stable Diffusion XL (SDXL) models](https://huggingface.co/models). 
-
-- **Hugging Face Diffusers Library**: The Diffusers library is provided by Hugging Face and is licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0). I do not own the rights to this library.
-
-- **Stable Diffusion XL (SDXL) Models**: The SDXL models are also provided by Hugging Face and may be subject to their respective licenses. I do not own the rights to these models.
-
-For more information about their licenses and usage, please refer to the official documentation and license agreements provided by Hugging Face.
-
-This project is not affiliated with, endorsed by, or sponsored by Hugging Face or StabilityAI.
+#### Side node: 1024x1024 with Euler generates at around 2 iteration per minute on M1 Mac. You can add manual precision handling for mps in this to make it run up to 4X faster.
