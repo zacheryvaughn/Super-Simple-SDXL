@@ -1,6 +1,6 @@
 # Super Simple SDXL Text-to-Image Inference
 #### This is the bare minimum script for running SDXL with the Diffusers library from Hugging Face.
-#### It does not mix samplers with schedulers, it does not support LoRA's, and it does not handle mixed precision or manual precision for mps, but all of these things can easily be added if you need them.
+#### Only standard schedulers without sde or karras, no loRAs, and no mps precision optimizations.
 
 ## Step 1: Setup your project directory structure.
 models/ (directory containing your models)  
