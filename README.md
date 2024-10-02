@@ -15,7 +15,7 @@ python3 -m venv .venv
 
 ## Step 3: Activate your virtual environment.
 In terminal:  
-source myenv/bin/activate
+source .venv/bin/activate
 
 
 ## Step 4: Make sure pip is up to date.
